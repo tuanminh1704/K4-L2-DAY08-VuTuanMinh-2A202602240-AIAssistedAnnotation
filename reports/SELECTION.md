@@ -1,0 +1,12 @@
+# Vì sao chọn lô này?
+
+Trong 50 dòng đứng đầu `outputs/selection_round1.csv`, chọn năm frame bạn sẽ ưu tiên nếu chỉ có
+ngân sách rà năm ảnh. Ghi tên, điểm, thời điểm, thứ tự và lý do; tối thiểu một quyết định phải xét
+ảnh gần trùng hoặc trường hợp model không dự đoán được box: Trong 50 dòng đứng đầu `outputs/selection_round2.csv`, nếu chỉ có ngân sách rà năm ảnh, tôi ưu tiên frame_0297.jpg (điểm 0.7974, thời điểm 118.8 giây, hạng 1), frame_0018.jpg (điểm 0.7151, thời điểm 7.2 giây, hạng 3), frame_0029.jpg (điểm 0.7127, thời điểm 11.6 giây, hạng 4), frame_0074.jpg (điểm 0.7086, thời điểm 29.6 giây, hạng 5) và frame_0002.jpg (điểm 0.6607, thời điểm 0.8 giây, hạng 8). Tôi ưu tiên các frame có điểm cao và có số lượng box/box chưa chắc chắn tương đối lớn. frame_0295.jpg đứng hạng 2 với điểm 0.7191 nhưng có thời điểm 118.0 giây, chỉ cách frame_0297.jpg 0.8 giây, nên tôi không chọn cả hai vì hai ảnh có khả năng thuộc cùng một đoạn cảnh gần nhau.
+
+
+Ba frame thuộc lô 12 ảnh model chọn và bằng chứng trong CSV/ảnh contact sheet: Ba frame thuộc lô 12 ảnh model chọn gồm frame_0297.jpg, frame_0018.jpg và frame_0029.jpg. frame_0297.jpg có điểm 0.7974, 10 box và 6 box chưa chắc chắn; frame_0018.jpg có điểm 0.7151, 7 box và 4 box chưa chắc chắn; frame_0029.jpg có điểm 0.7127, 10 box và 4 box chưa chắc chắn. Các thông tin này trong CSV cho thấy đây là những frame có nhiều vùng cần kiểm tra annotation.
+
+Một frame có điểm cao nhưng không chọn hoặc một frame có điểm thấp vẫn nên xem, và lý do: frame_0295.jpg có điểm 0.7191, đứng hạng 2 và cao hơn nhiều frame đã được chọn, nhưng không nằm trong lô 12 ảnh. Tôi không ưu tiên frame này vì nó ở thời điểm 118.0 giây, rất gần frame_0297.jpg ở 118.8 giây; frame_0296.jpg ở 118.4 giây cũng nằm giữa hai frame này. Do đó, chọn frame_0297.jpg giúp tránh rà nhiều ảnh gần như cùng một cảnh.
+
+Điều phép chọn này chưa chứng minh về chất lượng mô hình: Điểm selection cao chỉ cho biết frame đó có mức độ không chắc chắn hoặc tín hiệu cần xem xét cao hơn theo tiêu chí của bộ chọn. Nó chưa chứng minh rằng việc sửa frame đó sẽ trực tiếp làm chất lượng mô hình tăng lên. Muốn kết luận về hiệu quả, cần dựa thêm vào kết quả đánh giá sau khi mô hình được cập nhật và kiểm tra trên dữ liệu đánh giá phù hợp.

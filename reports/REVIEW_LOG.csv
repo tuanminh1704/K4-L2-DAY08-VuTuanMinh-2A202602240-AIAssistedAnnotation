@@ -1,0 +1,4 @@
+round,frame_id,object,action,rule_or_reason
+1,frame_0187.jpg,xe nhỏ ở phía xa,added,AI bỏ sót xe nên vẽ thêm bounding box bao quanh toàn bộ xe
+1,frame_0270.jpg,xe sát mép ảnh,edited,Kéo lại bounding box để ôm sát phần thân xe thực tế nhìn thấy
+1,frame_0331.jpg,vùng sáng trên mặt đường,deleted,Đây là ánh sáng phản chiếu không phải xe nên xóa bounding box
